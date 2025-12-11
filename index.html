@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Dangerous Engineer Pin Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Elite Dangerous Engineer Pin Planner</h1>
+        <div class="controls">
+            <div class="language-selector">
+                <label for="language">Language: </label>
+                <select id="language" class="button">
+                    <option value="en">English</option>
+                    <option value="de">Deutsch</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="pt">Português</option>
+                    <option value="ru">Русский</option>
+                    <option value="zh">中文</option>
+                    <option value="ka">ქართული</option>
+                </select>
+            </div>
+            <button id="copyLink" class="button">Open in EDOMH</button>
+            <button id="reset" class="button">Reset Selections</button>
+        </div>
+        <div id="tableContainer">
+            <div class="loading">Loading engineer data...</div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+    <script src="app.js" type="module"></script>
+</body>
+</html>
