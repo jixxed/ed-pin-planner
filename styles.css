@@ -102,6 +102,16 @@ tr:hover {
     background-color: #2d3748;
 }
 
+td.highlight-row,
+td.highlight-col {
+    background-color: #374151;
+    color: #89D07F;
+}
+/* th.highlight-row, */
+th.highlight-col {
+    color: #89D07F;
+}
+
 .blueprint-cell {
     /* white-space: nowrap; */
     /* width: 1px;  Makes column as narrow as possible */

@@ -483,6 +483,8 @@ function renderTable() {
     });
     
     table.appendChild(tbody);
+
+    setupHoverHighlight(table);
     
     // Clear and update container
     tableContainer.innerHTML = '';
@@ -494,4 +496,46 @@ function renderTable() {
         tableContainer.appendChild(table);
         // console.log('Table rendered with', table.rows.length, 'rows');
     }
+}
+
+function clearHighlights(table) {
+    table.querySelectorAll('.highlight-row, .highlight-col').forEach(cell => {
+        cell.classList.remove('highlight-row', 'highlight-col');
+    });
+}
+
+function highlightRowAndColumn(table, rowIndex, colIndex) {
+    const rows = Array.from(table.querySelectorAll('tr'));
+
+    rows.forEach((row, rIdx) => {
+        const cells = Array.from(row.children);
+
+        cells.forEach((cell, cIdx) => {
+            if (rIdx === rowIndex) {
+                cell.classList.add('highlight-row');
+            }
+            if (cIdx === colIndex) {
+                cell.classList.add('highlight-col');
+            }
+        });
+    });
+}
+
+function setupHoverHighlight(table) {
+    const rows = Array.from(table.querySelectorAll('tr'));
+
+    rows.forEach((row, rowIndex) => {
+        const cells = Array.from(row.children);
+
+        cells.forEach((cell, colIndex) => {
+            cell.addEventListener('mouseenter', () => {
+                clearHighlights(table);
+                highlightRowAndColumn(table, rowIndex, colIndex);
+            });
+
+            cell.addEventListener('mouseleave', () => {
+                clearHighlights(table);
+            });
+        });
+    });
 }
