@@ -546,7 +546,8 @@ function setupHoverHighlight(table) {
         cells.forEach((cell, colIndex) => {
             cell.addEventListener('mouseenter', () => {
                 clearHighlights(table);
-                highlightRowAndColumn(table, rowIndex, colIndex);
+                if(rowIndex !== 0 && colIndex !==0)
+                    highlightRowAndColumn(table, rowIndex, colIndex);
             });
 
             cell.addEventListener('mouseleave', () => {
