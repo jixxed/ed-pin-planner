@@ -432,6 +432,17 @@ function renderTable() {
         blueprintCell.setAttribute('data-original', blueprint); // Store original for reference
         row.appendChild(blueprintCell);
         
+        // First pass: collect all grades for this blueprint to find the maximum
+        const grades = [];
+        engineers.forEach(engineer => {
+            const engineerName = engineer.name;
+            const grade = engineerData[engineerName]?.blueprints[blueprint];
+            if (grade) {
+                grades.push(grade);
+            }
+        });
+        const maxGrade = grades.length > 0 ? Math.max(...grades) : null;
+        
         // Add cells for each engineer
         engineers.forEach(engineer => {
             const cell = document.createElement('td');
@@ -467,6 +478,11 @@ function renderTable() {
                 const gradeSpan = document.createElement('span');
                 gradeSpan.className = 'grade';
                 gradeSpan.textContent = `G${grade}`;
+                
+                // Color the maximum grade with #89D07F
+                if (grade === maxGrade) {
+                    gradeSpan.classList.add('grade-max');
+                }
                 
                 container.appendChild(checkbox);
                 container.appendChild(gradeSpan);
