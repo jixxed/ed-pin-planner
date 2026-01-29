@@ -394,6 +394,7 @@ function renderTable() {
     
     // Create header row with engineer names
     const thead = document.createElement('thead');
+    thead.className = 'table-header';
     const headerRow = document.createElement('tr');
     
     // Add empty cell for blueprint names column
